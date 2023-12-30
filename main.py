@@ -26,10 +26,17 @@ screen.onkey(l_paddle.move_down, "z")
 screen.onkey(r_paddle.move_up, KEY_UP)
 screen.onkey(r_paddle.move_down, KEY_DOWN)
 
+x_shift = 10
+y_shift = 10
+
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
     ball.move()
+
+    # Detect Collision with top or bottom
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce()
 
 screen.exitonclick()
